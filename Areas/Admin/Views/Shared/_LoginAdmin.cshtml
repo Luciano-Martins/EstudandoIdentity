@@ -1,0 +1,16 @@
+﻿<!-- faremos a injeção das classe do Identity-->
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> signInManage
+@inject UserManager<IdentityUser> userManage
+
+<!--Testamos se o User está logado-->
+@if (signInManage.IsSignedIn(User))
+{
+    <!-- testamos se o User é admin, se sim mostramos o link de acesso a pagina de administrador  -->
+    @if (User.IsInRole("Admin"))
+    {
+        <li>
+            <a class="nav-link text-dark" asp-area="Admin"asp-controller="Admin"asp-action="Index">Admin</a>
+        </li>
+    }
+}

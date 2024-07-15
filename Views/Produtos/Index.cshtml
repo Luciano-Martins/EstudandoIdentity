@@ -1,0 +1,48 @@
+﻿@model IEnumerable<MvcWebIdentity.Entities.Produto>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create"asp-controller="Produtos">Novo Produto</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ProdutoId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Nome)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Preco)
+            </th>         
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProdutoId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nome)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Preco)
+                </td>            
+                <td>
+                    <a asp-action="Edit"asp-controller="Produtos" asp-route-id="@item.ProdutoId" class="btn btn-primary" title="Editar"><i class="bi bi-pencil-fill" title="Editar"></i></a>
+                    <a asp-action="Detail" asp-controller="Produtos" asp-route-id="@item.ProdutoId" class="btn btn-warning"title="Detalhes"><i class="bi bi-ticket-detailed"title="Detalhes"></i></a>
+                    <a asp-action="Delete"asp-controller="Produtos" asp-route-id="@item.ProdutoId" class="btn btn-danger"title="Excluir"><i class="bi bi-trash"title="Excluir"></i></a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

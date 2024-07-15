@@ -1,0 +1,18 @@
+﻿
+<!--aqui injetamos as classe do Identity, para podermos testar a autenticação-->
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+
+<!--testando se o usuario está logado-->
+@if (SignInManager.IsSignedIn(User))
+{
+    <!-- se estiver , testo se a role é Admin, se sim , mostro o link para área de administrador-->
+    @if (User.IsInRole("Admin"))
+    {
+        <li class="nav-iten">
+            <a class="nav-link text-dark"asp-area="Admin"asp-controller="Admin"asp-action="Index">Admin</a>
+
+        </li>
+    }
+}
